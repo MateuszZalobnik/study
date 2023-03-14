@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+dependencies {
+    implementation project(':html-remover')
+}
+
+repositories {
+    mavenCentral()
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+mainClassName = 'com.example.Application'
+
+sourceSets {
+    main {
+        java {
+            srcDirs 'src'
+        }
+    }
+}
