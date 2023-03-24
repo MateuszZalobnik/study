@@ -14,7 +14,7 @@ public class RootsCalculator {
         } else if (a== 0 && b != 0){
             result.add((-c/b));
         } else if (a != 0){
-            double delta = Math.pow(a, 2) - 4*a*c;
+            double delta = Math.pow(b, 2) - 4*a*c;
             if(delta < 0){
 
             } else if (delta == 0){
@@ -32,6 +32,6 @@ public class RootsCalculator {
 
     
     public static void main(String[] args) {
-        calculate_roots(1, -5, -6);
+        calculate_roots(1, -4, 4);
     }
 }
