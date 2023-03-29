@@ -1,6 +1,8 @@
+package zad1;
+
 public class ITEmployee extends Employee {
-    private double payout;
     private int experience;
+    public double bonus = 0;
 
     public ITEmployee(String firstname, String surname, double salary, int experience) {
         this.firstname = firstname;
@@ -8,13 +10,14 @@ public class ITEmployee extends Employee {
         this.salary = salary;
         this.experience = experience;
         if (experience < 2) {
-            this.payout = Math.round((salary + 500) - ((salary + 500) * this.tax));
+            bonus = 500;
         } else if (experience < 5) {
-            this.payout = Math.round((salary + 2000) - ((salary + 2000) * this.tax));
+            bonus = 2000;
         } else {
-            this.payout = Math.round((salary + 5000) - ((salary + 5000) * this.tax));
+            bonus = 5000;
         }
-        display();
+        this.payout = Math.round((salary + bonus) - ((salary + bonus) * this.tax));
+        this.display();
     }
 
     public void display() {
@@ -22,7 +25,13 @@ public class ITEmployee extends Employee {
         System.out.println("stanowisko: " + "pracownik IT");
         System.out.println(this.firstname + " " + this.surname);
         System.out.println("pensja: " + this.salary);
+        System.out.println("pensja + premia: " + Math.round(this.salary + bonus));
         System.out.println("doświadczenie: " + this.experience);
-        System.out.println("wypłata: " + payout);
+        System.out.println("wypłata: " + this.payout);
     }
+
+    // public static void main(){
+    //     System.out.println("----------------------");
+    //     System.out.println("stanowisko: " + "pracownik IT");
+    // } 
 }

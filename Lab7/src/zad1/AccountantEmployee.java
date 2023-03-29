@@ -1,5 +1,6 @@
+package zad1;
+
 public class AccountantEmployee extends Employee {
-    private double payout;
     public AccountantEmployee (String firstname, String surname, double salary){
         this.firstname = firstname;
         this.surname = surname;
@@ -13,6 +14,7 @@ public class AccountantEmployee extends Employee {
         System.out.println("stanowisko: " + "księgowy");
         System.out.println(this.firstname + " " + this.surname);
         System.out.println("pensja: " + this.salary);
-        System.out.println("wypłata: " + payout);
+        System.out.println("pensja + premia: " + Math.round(this.salary*1.1));
+        System.out.println("wypłata: " + this.payout);
     }
 }
