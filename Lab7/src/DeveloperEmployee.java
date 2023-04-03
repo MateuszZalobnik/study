@@ -1,4 +1,3 @@
-package zad1;
 
 public class DeveloperEmployee extends ITEmployee {
     public DeveloperEmployee(String firstname, String surname, double salary, int experience) {

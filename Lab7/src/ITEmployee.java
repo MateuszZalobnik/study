@@ -1,4 +1,3 @@
-package zad1;
 
 public class ITEmployee extends Employee {
     private int experience;

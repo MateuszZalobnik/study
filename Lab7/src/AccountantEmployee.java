@@ -1,4 +1,3 @@
-package zad1;
 
 public class AccountantEmployee extends Employee {
     public AccountantEmployee (String firstname, String surname, double salary){

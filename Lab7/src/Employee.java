@@ -1,4 +1,3 @@
-package zad1;
 
 public class Employee {
     public String firstname;
