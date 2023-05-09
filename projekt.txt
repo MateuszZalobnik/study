@@ -1,0 +1,13 @@
+Modelowanie ruchu drogowego - symulacja oparta na agentach może służyć do badania przepływu ruchu na drogach, uwzględniając różne zachowania kierowców i czynniki takie jak korki, wypadki czy zmiany organizacji ruchu.
+
+Modelowanie rynków finansowych - symulacje oparte na agentach mogą pomóc w badaniu rynków finansowych, uwzględniając różne zachowania inwestorów i czynniki ekonomiczne, takie jak zmienność rynku, ceny akcji, stopa procentowa itp.
+
+Modelowanie epidemii - symulacje oparte na agentach mogą służyć do badania rozprzestrzeniania się chorób zakaźnych, uwzględniając różne czynniki, takie jak zachowania ludzi, rozprzestrzenianie się wirusa, skuteczność szczepionek itp.
+
+Modelowanie zachowań społecznych - symulacje oparte na agentach mogą służyć do badania zachowań ludzi w różnych sytuacjach społecznych, takich jak konflikty, współpraca, zorganizowane działania, zmiany kulturowe itp.
+
+Modelowanie zmian klimatu - symulacje oparte na agentach mogą służyć do badania zmian klimatu i wpływu na nie człowieka, uwzględniając różne czynniki, takie jak emisja gazów cieplarnianych, zmiany w użytkowaniu ziemi, zmiany w technologii itp.
+
+Modelowanie systemów transportowych - symulacje oparte na agentach mogą służyć do badania różnych scenariuszy związanych z systemami transportowymi, uwzględniając różne czynniki, takie jak poziom zatłoczenia, planowanie tras, przepustowość itp.
+
+Modelowanie zachowań zwierząt - symulacje oparte na agentach mogą służyć do badania zachowań zwierząt w różnych warunkach, uwzględniając różne czynniki, takie jak dostępność pożywienia, zagrożenia ze strony drapieżników, rywalizacja między gatunkami itp.
