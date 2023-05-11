@@ -4,6 +4,11 @@ public class Car {
     private static int speed = 1;
     private boolean isMoving;
 
+    Car () {
+        this.x = 0;
+        this.y = 0;  
+    }
+
     public void setPosition(int x, int y){
         this.x = x;
         this.y = y;

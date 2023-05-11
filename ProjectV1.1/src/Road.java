@@ -2,24 +2,66 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Timer;
 
 public class Road extends JPanel {
+    private int carWidth = 15;
+    private int carHeight = 12;
     private static final Color ROAD_COLOR = Color.DARK_GRAY;
     private static final Color SQUARE_COLOR = Color.BLUE;
     private static final Color MARKING_COLOR = Color.WHITE;
 
-    private List<Point> squareCoordinates;
+    private List<Point> points;
+    private Timer timer;
+
+    private MoveModel firstModel;
 
     public Road(ArrayList<Car> listOfCars) {
-        squareCoordinates = new ArrayList<>();
+        points = new ArrayList<>();
+        firstModel = new MoveModel(listOfCars);
+        // for (Car item : listOfCars) {
+        //     int x = item.getPositionX();
+        //     int y = item.getPositionY();
+        //     points.add(new Point(x, y));
+        // }
 
-        for (Car item : listOfCars) {
+        timer = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                updatePoints();
+                repaint();
+            }
+        });
+        timer.start();
+    }
+
+    private void updatePoints() {
+        points.clear();
+        for (Car item : firstModel.move()) {
             int x = item.getPositionX();
             int y = item.getPositionY();
-            System.out.println("x" + x + " y" + y);
-            squareCoordinates.add(new Point(x, y));
+            points.add(new Point(x, y));
+        }
+        java.util.Iterator<Point> iterator = points.iterator();
+        while (iterator.hasNext()) {
+            Point point = iterator.next();
+
+            int x = point.x;
+            int y = point.y;
+
+            // Update the position of the point
+            // x += 1; // Adjust the movement speed as needed
+
+            // Wrap around the panel edges
+            if (x > getWidth()) {
+                iterator.remove(); // Remove the point from the list
+            } else {
+                point.setLocation(x, y);
+            }
         }
     }
 
@@ -30,7 +72,6 @@ public class Road extends JPanel {
         // Set the background color of the panel to green
         setBackground(ROAD_COLOR);
 
-
         // Draw the marks on the board
         for (int i = 0; i < 500; i += 30) {
             g.setColor(MARKING_COLOR);
@@ -38,12 +79,12 @@ public class Road extends JPanel {
         }
 
         // Draw the squares on the board
-        for (Point coordinate : squareCoordinates) {
+        for (Point coordinate : points) {
             int x = coordinate.x;
             int y = coordinate.y;
 
             g.setColor(SQUARE_COLOR);
-            g.fillRect(x, y, 15, 12); // Adjust the size of the square as needed
+            g.fillRect(x, y, carWidth, carHeight); // Adjust the size of the square as needed
         }
     }
 }
