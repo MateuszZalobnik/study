@@ -25,13 +25,8 @@ public class Road extends JPanel {
     public Road(ArrayList<Car> listOfCars) {
         points = new ArrayList<>();
         firstModel = new MoveModel(listOfCars);
-        // for (Car item : listOfCars) {
-        // int x = item.getPositionX();
-        // int y = item.getPositionY();
-        // points.add(new Point(x, y));
-        // }
 
-        timer = new Timer(500, new ActionListener() {
+        timer = new Timer(50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updatePoints();

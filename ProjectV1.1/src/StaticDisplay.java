@@ -9,7 +9,7 @@ public class StaticDisplay {
         ArrayList<Car> listOfCars;
         listOfCars = new ArrayList<>();
 
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 18; i++) {
             Car c = new Car();
             listOfCars.add(c);
         }
