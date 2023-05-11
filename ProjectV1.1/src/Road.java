@@ -22,9 +22,9 @@ public class Road extends JPanel {
 
     private MoveModel firstModel;
 
-    public Road(ArrayList<Car> listOfCars) {
+    public Road() {
         points = new ArrayList<>();
-        firstModel = new MoveModel(listOfCars);
+        firstModel = new MoveModel(18);
 
         timer = new Timer(50, new ActionListener() {
             @Override

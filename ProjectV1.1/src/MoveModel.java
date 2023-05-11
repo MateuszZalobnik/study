@@ -3,7 +3,9 @@ import java.util.Random;
 
 public class MoveModel {
     private ArrayList<Car> AllCars; // all cars
-    private int MaxTimeReaction = 4; // free space between cars
+    private int MaxTimeReaction = 3; // max time reaction
+    private int MinTimeReaction = 1; // min time reaction
+    private int trafficLightsTime = 9; // traffic lights time change
 
     private Car[] board;
     private ArrayList<Car> listOfCars;
@@ -11,17 +13,19 @@ public class MoveModel {
     private int timeStep = 0;
     public static int width = 40;
 
-    MoveModel(ArrayList<Car> AllInitialCars) {
+    MoveModel(int numberOfCars) {
         this.trafficLight = new TrafficLight("green");
         this.board = new Car[width];
         this.AllCars = new ArrayList<>();
         this.listOfCars = new ArrayList<>();
-        for (Car car : AllInitialCars) {
+        for (int i = 0; i < numberOfCars; i++) {
+            Car car = new Car();
             Random random = new Random();
-            int randomReaction = random.nextInt(MaxTimeReaction)+2; // reaction between 0 and max;
+            int randomReaction = random.nextInt(MaxTimeReaction) + MinTimeReaction; // reaction between 0 and max;
             car.setReaction(randomReaction);
             this.AllCars.add(car);
         }
+
     }
 
     public TrafficLight getLight() {
@@ -30,7 +34,7 @@ public class MoveModel {
 
     public ArrayList<Car> move() {
         listOfCars.clear();
-        if (timeStep % 9 == 0) {
+        if (timeStep % trafficLightsTime == 0) {
             if (this.trafficLight.getState().equals("green")) {
                 this.trafficLight.setState("red");
             } else {
@@ -60,12 +64,10 @@ public class MoveModel {
                         if (board[i].getCurrentReaction() == 0) {
                             board[i + 1] = board[i];
                             board[i] = null;
-                        } 
-                        else {
+                        } else {
                             board[i].currentReactionDecrease();
                         }
-                    } 
-                    else {
+                    } else {
                         board[i].setIsMoving(false);
                     }
 
