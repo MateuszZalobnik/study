@@ -14,6 +14,8 @@ public class Road extends JPanel {
     private static final Color ROAD_COLOR = Color.DARK_GRAY;
     private static final Color SQUARE_COLOR = Color.BLUE;
     private static final Color MARKING_COLOR = Color.WHITE;
+    private static final Color RED_COLOR = Color.RED;
+    private static final Color GREEN_COLOR = Color.GREEN;
 
     private List<Point> points;
     private Timer timer;
@@ -24,9 +26,9 @@ public class Road extends JPanel {
         points = new ArrayList<>();
         firstModel = new MoveModel(listOfCars);
         // for (Car item : listOfCars) {
-        //     int x = item.getPositionX();
-        //     int y = item.getPositionY();
-        //     points.add(new Point(x, y));
+        // int x = item.getPositionX();
+        // int y = item.getPositionY();
+        // points.add(new Point(x, y));
         // }
 
         timer = new Timer(500, new ActionListener() {
@@ -53,8 +55,6 @@ public class Road extends JPanel {
             int x = point.x;
             int y = point.y;
 
-            // Update the position of the point
-            // x += 1; // Adjust the movement speed as needed
 
             // Wrap around the panel edges
             if (x > getWidth()) {
@@ -63,6 +63,7 @@ public class Road extends JPanel {
                 point.setLocation(x, y);
             }
         }
+
     }
 
     @Override
@@ -73,7 +74,7 @@ public class Road extends JPanel {
         setBackground(ROAD_COLOR);
 
         // Draw the marks on the board
-        for (int i = 0; i < 500; i += 30) {
+        for (int i = 0; i < getWidth(); i += 30) {
             g.setColor(MARKING_COLOR);
             g.fillRect(i, 24, 20, 2);
         }
@@ -86,5 +87,13 @@ public class Road extends JPanel {
             g.setColor(SQUARE_COLOR);
             g.fillRect(x, y, carWidth, carHeight); // Adjust the size of the square as needed
         }
+
+        //Draw traffic lights
+        if (firstModel.getLight().getState() == "red") {
+            g.setColor(RED_COLOR);
+        } else {
+            g.setColor(GREEN_COLOR);
+        }
+        g.fillRect(MoveModel.width*20/2-50, 32, 15,15);
     }
 }

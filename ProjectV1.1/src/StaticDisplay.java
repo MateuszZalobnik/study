@@ -9,21 +9,21 @@ public class StaticDisplay {
         ArrayList<Car> listOfCars;
         listOfCars = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 15; i++) {
             Car c = new Car();
             listOfCars.add(c);
         }
 
         SwingUtilities.invokeLater(() -> {
             JFrame frame = new JFrame("Traffic Agent Based Model");
-            frame.setSize(1000, 800);
+            frame.setSize(MoveModel.width*20+400, MoveModel.width*20);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
             JPanel greenBoard = new JPanel(null);
             greenBoard.setBackground(Color.GREEN);
-            greenBoard.setBounds(450, 150, 500, 500);
+            greenBoard.setBounds(400, 0, MoveModel.width*20, MoveModel.width*20);
             Road road = new Road(listOfCars);
-            road.setBounds(0, 225, 500, 50);
+            road.setBounds(0, (MoveModel.width*20/2)-25, MoveModel.width*20, 50);
             greenBoard.add(road);
             frame.add(greenBoard);
 

@@ -6,10 +6,11 @@ public class MoveModel {
     private ArrayList<Car> listOfCars;
     private TrafficLight trafficLight;
     private int timeStep = 0;
+    public static int width = 40; 
 
     MoveModel(ArrayList<Car> AllInitialCars) {
-        this.trafficLight = new TrafficLight("red");
-        this.board = new Car[50];
+        this.trafficLight = new TrafficLight("green");
+        this.board = new Car[width];
         this.AllCars = new ArrayList<>();
         this.listOfCars = new ArrayList<>();
         for (Car car : AllInitialCars) {
@@ -17,22 +18,26 @@ public class MoveModel {
         }
     }
 
+    public TrafficLight getLight(){
+        return this.trafficLight;
+    }
+
     public ArrayList<Car> move() {
         listOfCars.clear();
         if (timeStep % 5 == 0) {
-            if (trafficLight.getState().equals("green")) {
-                trafficLight.setState("red");
+            if (this.trafficLight.getState().equals("green")) {
+                this.trafficLight.setState("red");
             } else {
-                trafficLight.setState("green");
+                this.trafficLight.setState("green");
             }
         }
-
-        for (int i = 49; i >= 0; i--) {
+        
+        for (int i = width-1; i >= 0; i--) {
             if (board[i] != null) {
-                if (i == 49) {
+                if (i == width-1) {
                     board[i] = null;
-                } else if (i == 10) {
-                    if (board[i + 1] == null && trafficLight.getState().equals("green")) {
+                } else if (i == MoveModel.width/2-5) {
+                    if (board[i + 1] == null && this.trafficLight.getState().equals("green")) {
                         board[i + 1] = board[i];
                         board[i] = null;
                     }
@@ -50,10 +55,10 @@ public class MoveModel {
             AllCars.remove(0);
         }
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < width; i++) {
             if (board[i] != null) {
 
-                board[i].setPosition(i*10, 32);
+                board[i].setPosition(i*20, 32);
                 listOfCars.add(board[i]);
             }
         }
@@ -62,6 +67,7 @@ public class MoveModel {
             System.out.println(item.getPositionX());
         }
         System.out.println("");
+        timeStep++;
         return this.listOfCars;
     }
 

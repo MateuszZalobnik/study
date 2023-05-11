@@ -1,8 +1,6 @@
 public class Car {
     private int x;
     private int y;
-    private static int speed = 1;
-    private boolean isMoving;
 
     Car () {
         this.x = 0;
