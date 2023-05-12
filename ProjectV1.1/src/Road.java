@@ -26,10 +26,10 @@ public class Road extends JPanel {
 
     public Road() {
         points = new ArrayList<>();
-        firstModel = new MoveModel(16, false,0,4,7);
-        secondModel = new MoveModel(22, true, 4,6,12);
+        firstModel = new MoveModel(5, 5, 40, false,3,4,7);
+        secondModel = new MoveModel(22,2,100, true, 1,6,12);
 
-        timer = new Timer(50, new ActionListener() {
+        timer = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 updatePoints();
