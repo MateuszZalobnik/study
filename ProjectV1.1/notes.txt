@@ -1,0 +1,6 @@
+współdrzędne samochodów
+ilość fal - co ile timestep
+szybkość symulacji
+walidacja
+start
+stop

@@ -11,6 +11,7 @@ import javax.swing.Timer;
 public class Road extends JPanel {
     private int carWidth = 15;
     private int carHeight = 12;
+    private int carAllSpace = RootDisplay.boardScale;
     private static final Color ROAD_COLOR = Color.DARK_GRAY;
     private static final Color SQUARE_COLOR = Color.BLUE;
     private static final Color MARKING_COLOR = Color.WHITE;
@@ -21,10 +22,12 @@ public class Road extends JPanel {
     private Timer timer;
 
     private MoveModel firstModel;
+    private MoveModel secondModel;
 
     public Road() {
         points = new ArrayList<>();
-        firstModel = new MoveModel(18);
+        firstModel = new MoveModel(16, false,0,4,7);
+        secondModel = new MoveModel(22, true, 4,6,12);
 
         timer = new Timer(50, new ActionListener() {
             @Override
@@ -39,6 +42,11 @@ public class Road extends JPanel {
     private void updatePoints() {
         points.clear();
         for (Car item : firstModel.move()) {
+            int x = item.getPositionX();
+            int y = item.getPositionY();
+            points.add(new Point(x, y));
+        }
+        for (Car item : secondModel.move()) {
             int x = item.getPositionX();
             int y = item.getPositionY();
             points.add(new Point(x, y));
@@ -76,19 +84,28 @@ public class Road extends JPanel {
 
         // Draw the squares on the board
         for (Point coordinate : points) {
-            int x = coordinate.x;
+            int x = coordinate.x*carAllSpace;
             int y = coordinate.y;
 
             g.setColor(SQUARE_COLOR);
             g.fillRect(x, y, carWidth, carHeight); // Adjust the size of the square as needed
         }
 
-        //Draw traffic lights
+        //Draw traffic lights for first model
         if (firstModel.getLight().getState() == "red") {
             g.setColor(RED_COLOR);
         } else {
             g.setColor(GREEN_COLOR);
         }
-        g.fillRect(MoveModel.width*20/2-50, 32, 15,15);
+        g.fillRect(MoveModel.boardWidth*20/2-50, 32, 15,15);
+        
+        //Draw traffic lights for second model
+        if (secondModel.getLight().getState() == "red") {
+            g.setColor(RED_COLOR);
+        } else {
+            g.setColor(GREEN_COLOR);
+        }
+        g.fillRect(MoveModel.boardWidth*20/2+25, 5, 15,15);
     }
+
 }
