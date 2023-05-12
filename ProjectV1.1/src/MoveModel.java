@@ -143,4 +143,11 @@ public class MoveModel {
             }
         }
     }
+
+    public boolean isEnd() {
+        if (numberOfWaves == 0 && AllCars.size() == 0 && listOfCars.size() == 0) {
+            return true;
+        }
+        return false;
+    }
 }
